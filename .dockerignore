@@ -1,7 +1,7 @@
 myproject/
 migrations/
 
-# 어느 디렉토리 밑에 있건 재귀적으로 적용
+# 어느 디렉토리 밑에 있건 재귀적으로 적용합니다.
 **/__pycache__/
 **/logs/
 **/old/
