@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'form_errors.html' %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-5 col-md-offset-2">
+            <h1>이전 추론 기록</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>나이</th>
+                        <th>BMI</th>
+                        <th>자녀 수</th>
+                        <th>흡연 여부</th>
+                        <th>성별</th>
+                        <th>지역</th>
+                        <th>예상 보험료</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{ result.created_at | date_time }}</td>
+                        <td>{{ result.age }}</td>
+                        <td>{{ result.bmi }}</td>
+                        <td>{{ result.children }}</td>
+                        <td>{{ '예' if result.smoker else '아니오' }}</td>
+                        <td>{{ result.sex }}</td>
+                        <td>{{ result.region }}</td>
+                        <td>{{ result.expected_insurance_fee | round(2) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4"">
+            <h1>보험료 예측하기</h1>
+            <form method="post">
+                {{ form.csrf_token }}
+                {{ form.hidden_tag() }}
+                {{ form.age.label }} {{ form.age(size=2, class="form-control") }} <br>
+                {{ form.sex.label }} {{ form.sex(class="form-control") }} <br>
+                {{ form.bmi.label }} {{ form.bmi(class="form-control") }} <br>
+                {{ form.children.label }} {{ form.children(size=2, class="form-control") }} <br>
+                {{ form.smoker }} {{ form.smoker.label }} <br>
+                {{ form.region.label }} {{ form.region(class="form-control") }} <br>
+                {{ form.submit(class="btn btn-primary") }}
+            </form>
+        </div>
+    </div>
+    <br><br><br>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'form_errors.html' %}
+<div class="container my-3">
+    <!-- 질문 -->
+    <h2 class="border-bottom py-2">{{ question.subject }}</h2>
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>
+            <div class="d-flex justify-content-end">
+                <div class="badge bg-light text-dark p-2">
+                    {{ question.user.username }}
+                </div>
+                <div class="badge bg-light text-dark p-2">
+                    {{ question.create_date | date_time }}
+                </div>
+            </div>
+            <!-- 로그인 된 상태 (g.user), 작성자가 로그인한 사용자와 일치하는 상태-->
+            {% if g.user == question.user %}
+            <a class="btn btn-primary" href="{{ url_for('board.modify', question_id=question.id ) }}">수정</a>
+            <a class="btn btn-primary" href="{{ url_for('board.delete', question_id=question.id ) }}">삭제</a>
+            {% endif %}
+        </div>
+    </div>
+       
+    {% include 'answer/answerForm.html' %}
+    
+    <h5 class="border-bottom my-3 py-2">{{ question.answer_set|length }}개의 답변이 있습니다.</h5>
+    {% for answer in question.answer_set %}
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;">{{ answer.content }}</div>
+            <div class="d-flex justify-content-end">
+                <div class="badge bg-light text-dark p-2">
+                    {{ answer.user.username }}
+                </div>
+                <div class="badge bg-light text-dark p-2">
+                    {{ answer.create_date }}
+                </div>
+                            <!-- 로그인 된 상태 (g.user), 작성자가 로그인한 사용자와 일치하는 상태-->
+                {% if g.user == answer.user %}&nbsp;&nbsp;
+                <a class="btn btn-primary" href="{{ url_for('answer.modify', answer_id=answer.id ) }}">수정</a>&nbsp;&nbsp;
+                <a class="btn btn-primary" href="{{ url_for('answer.delete', answer_id=answer.id ) }}">삭제</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <br>
+    <br>
+
+    
+
+{% endblock %}
