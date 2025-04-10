@@ -33,8 +33,8 @@ node {
 
         stage('Deploy') {
             sshagent(credentials: ['ec2-flask-server']) {
-                sh(script: 'ssh -o StrictHostKeyChecking=no ubuntu@13.209.151.9 "sudo docker rm -f docker-sb"')
-                sh(script: 'ssh -o StrictHostKeyChecking=no ubuntu@13.209.151.9 "sudo docker run --name docker-sb --env-file .env -e TZ=Asia/Seoul -p 8080:8080 -d -t ${DOCKER_USER_ID}/fisa-app:${BUILD_NUMBER}"')
+                sh(script: 'ssh -o StrictHostKeyChecking=no ubuntu@3.35.27.98 "sudo docker rm -f docker-sb"')
+                sh(script: 'ssh -o StrictHostKeyChecking=no ubuntu@3.35.27.98 "sudo docker run --name docker-sb --env-file .env -e TZ=Asia/Seoul -p 8080:8080 -d -t ${DOCKER_USER_ID}/fisa-app:${BUILD_NUMBER}"')
             }
             echo "Stage Deploy success"
         }
