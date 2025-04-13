@@ -1,3 +1,4 @@
+test
 node {
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
                       credentialsId: 'docker-hub',
