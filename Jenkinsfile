@@ -1,4 +1,3 @@
-1111
 node {
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
                       credentialsId: 'docker-hub',
