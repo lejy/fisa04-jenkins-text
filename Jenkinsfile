@@ -1,3 +1,4 @@
+# next from here
 node {
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
                       credentialsId: 'docker-hub',
