@@ -7,9 +7,9 @@ node {
         stage('Pull') {
             try {
                 git branch: 'main', url: 'https://github.com/YeonjiKim0316/fisa04-jenkins-text.git'
-                echo "Stage Pull success"
+                echo "Stage Pull success!"
             } catch (Exception e) {
-                echo "Stage Pull failed"
+                echo "Stage Pull failed!"
                 throw e
             }
         }
