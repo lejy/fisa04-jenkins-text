@@ -4,7 +4,7 @@ node {
                       usernameVariable: 'DOCKER_USER_ID',
                       passwordVariable: 'DOCKER_USER_PASSWORD']]) {
 
-        stage('Pull ') {
+        stage('Pull') {
             try {
                 git branch: 'main', url: 'https://github.com/YeonjiKim0316/fisa04-jenkins-text.git'
                 echo "Stage Pull success"
