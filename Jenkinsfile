@@ -42,7 +42,7 @@ node {
 
         stage('Cleaning up') {
             sh "sudo docker rmi ${DOCKER_USER_ID}/fisa-app:${BUILD_NUMBER}"
-            echo "Stage Cleaning up success!!!"
+            echo "Stage Cleaning up success"
         }
     }
 }
