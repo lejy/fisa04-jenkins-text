@@ -8,5 +8,4 @@ migrations/
 
 test.db
 
-# 환경설정 파일은 제외
 .env
