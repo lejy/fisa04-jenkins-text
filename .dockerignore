@@ -6,5 +6,6 @@ migrations/
 **/logs/
 **/old/
 
+# 기타 파일 등록
 test.db
 .env
