@@ -6,7 +6,7 @@ load_dotenv()
 
 myDBid = os.environ.get('DBid')
 myDBpw = os.environ.get('DBpassword')
-mySecretKey = os.environ.get('FLASK_SECRET_KEY')
+mySecretKey = os.environ.get('SECRET_KEY')
 myDB = os.environ.get('DB')
 mySchema = os.environ.get('SCHEMA')
 
